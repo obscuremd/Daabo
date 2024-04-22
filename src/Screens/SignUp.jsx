@@ -35,11 +35,11 @@ const SignUp = ({setActive, func, setEmail, setPassword}) => {
         {/* already have an account */}
         <View style={{flexDirection:'row', alignItems:'center', gap:2, justifyContent:'center', marginTop:48}}>
             <Text style={{fontSize:15, fontWeight:'400', color:'#868686', }}>
-                New here? 
+                Already have an account
             </Text>
 
             <TouchableOpacity onPress={()=>setActive(2)}>
-              <Text style={{color:'#5956E9', fontSize:15, fontWeight:'500'}}>Create an account</Text>
+              <Text style={{color:'#5956E9', fontSize:15, fontWeight:'500'}}>Log In</Text>
             </TouchableOpacity>
         </View>
         

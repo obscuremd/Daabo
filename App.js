@@ -4,6 +4,10 @@ import Auth from './src/Screens/Auth';
 import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut, updateCurrentUser } from 'firebase/auth';
+import Navigation from './src/Navigation/Navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux'
+import { store } from './src/Store/Store';
 import { auth } from './config/firebaseConfig';
 
 
@@ -30,24 +34,15 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      { user ?
-          <View>
-            <Text>logged in</Text>
-            <TouchableOpacity onPress={logOut}>
-              <Text>Log out</Text>
-            </TouchableOpacity>
-          </View>
-              :
-        <View style={styles.container}>
-          <Auth/>
-        </View>
-      }
-    </View>
+    <Provider store={store}>
 
+      <NavigationContainer >
+          {user ? <Navigation /> : <View style={styles.container}><Auth/></View>}
+          {/* <Navigation/> */}
+      </NavigationContainer>
+    </Provider>
      
 
-        // 
   );
 }
 
